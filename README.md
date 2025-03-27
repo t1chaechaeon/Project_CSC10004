@@ -25,12 +25,8 @@ This project is an implementation of the **2048 Game** as part of the **Data Str
 ## 📂 File Structure
 ```
 Project_2048/
-│── src/                 # Source code files
-│── include/             # Header files
-│── assets/              # Images, fonts, and sounds
-│── save/                # Binary files for user data & game state
+│── Project_CSC/         # Source code files
 │── README.md            # Project documentation
-│── main.cpp             # Entry point of the game
 ```
 
 ## 🚀 How to Run the Project
@@ -39,8 +35,8 @@ Project_2048/
 - Ensure you have a **C++ compiler** (G++ or MSVC).
 - Clone the repository:
   ```sh
-  git clone https://github.com/t1chaechaeon/Project_2048_DSA.git
-  cd Project_2048_DSA
+  git clone https://github.com/t1chaechaeon/Project_CSC10004.git
+  cd Project_CSC_10004
   ```
 - Compile and run the program:
   ```sh
