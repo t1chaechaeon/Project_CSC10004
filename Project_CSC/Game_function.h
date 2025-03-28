@@ -28,6 +28,8 @@ void spawnNewTile(int** matrix, int n);
 void printMatrix(int** matrix, int n, unsigned int score);
 
 // Lưu trữ trạng thái game để Undo/Redo bằng mảng vòng
+// Sao chép ma trận
+void copyMatrix(int** src, int**& dest, int n);
 void saveState(int** matrix, int n, unsigned int score);
 void undo(int**& matrix, int n, unsigned int& score);
 void redo(int**& matrix, int n, unsigned int& score);

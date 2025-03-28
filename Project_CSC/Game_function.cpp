@@ -110,6 +110,7 @@ bool checkWin(int** matrix, int n) {
 
 // In bảng game
 void printMatrix(int** matrix, int n, unsigned int score) {
+    system("cls");
     cout << "Score: " << score << endl;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {

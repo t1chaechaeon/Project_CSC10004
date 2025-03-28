@@ -29,7 +29,7 @@ UserNode* registerUser(UserNode* root) {
     ofstream outFile("users.dat", ios::binary | ios::app);
     if (outFile) {
         outFile.write(reinterpret_cast<char*>(&username), sizeof(username));
-        size_t hashedPwd = hashedPassWord(password);
+        size_t hashedPwd = hashPassWord(password);
         outFile.write(reinterpret_cast<char*>(&hashedPwd), sizeof(hashedPwd));
         outFile.close();
     }

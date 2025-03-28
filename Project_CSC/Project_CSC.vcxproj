@@ -129,18 +129,24 @@
   <ItemGroup>
     <ClCompile Include="Game_function.cpp" />
     <ClCompile Include="LeaderBoard.cpp" />
+    <ClCompile Include="LoginUser.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="Resume.cpp" />
-    <ClCompile Include="Test.cpp" />
     <ClCompile Include="User_Auth.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game_function.h" />
     <ClInclude Include="LeaderBoard.h" />
+    <ClInclude Include="LoginUser.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Register.h" />
     <ClInclude Include="Resume.h" />
     <ClInclude Include="User_Auth.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="savefile.dat" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

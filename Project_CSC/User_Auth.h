@@ -18,8 +18,9 @@ struct UserNode {
     }
 };
 
+
 // Hàm mã hóa mật khẩu
-size_t hashedPassWord(const string& password);
+size_t hashPassWord(const string& password);
 
 // Xác thực lại mật khẩu 2 lần
 bool confirmPassWord(const string& passWord1, const string& passWord2);
@@ -32,3 +33,7 @@ UserNode* findUser(UserNode* root, const string& username);
 
 // Hàm đăng nhập
 bool loginUser(UserNode* root, const string& username, const string& passWord);
+// Ghi dữ liệu user xuống file(Duyệt cây theo thứ tự NLR)
+void saveUsersToFile(UserNode * root, ofstream & outFile);
+// Đọc dữ liệu user từ file
+UserNode* loadUsersFromFile(const string& filename);
