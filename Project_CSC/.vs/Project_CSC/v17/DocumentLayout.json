@@ -1,9 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\namnq\\OneDrive\\M\u00E1y t\u00EDnh\\Project_CSC1004\\Project_CSC\\",
+  "WorkspaceRootPath": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|C:\\Users\\namnq\\OneDrive\\M\u00E1y t\u00EDnh\\Project_CSC1004\\Project_CSC\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Test.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -23,12 +27,25 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Test.cpp",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Test.cpp",
+              "RelativeDocumentMoniker": "Test.cpp",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Test.cpp",
+              "RelativeToolTip": "Test.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-28T04:31:28.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\namnq\\OneDrive\\M\u00E1y t\u00EDnh\\Project_CSC1004\\Project_CSC\\main.cpp",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\main.cpp",
               "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Users\\namnq\\OneDrive\\M\u00E1y t\u00EDnh\\Project_CSC1004\\Project_CSC\\main.cpp",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\main.cpp",
               "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-27T16:38:27.804Z",
               "EditorCaption": ""

@@ -132,6 +132,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="Resume.cpp" />
+    <ClCompile Include="Test.cpp" />
     <ClCompile Include="User_Auth.cpp" />
   </ItemGroup>
   <ItemGroup>

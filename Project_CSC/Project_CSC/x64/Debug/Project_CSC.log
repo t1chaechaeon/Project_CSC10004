@@ -1,7 +1,17 @@
-﻿main.obj : error LNK2019: unresolved external symbol "bool __cdecl loginUser(struct UserNode *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loginUser@@YA_NPEAUUserNode@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z) referenced in function "void __cdecl mainMenu(void)" (?mainMenu@@YAXXZ)
+﻿  Game_function.cpp
+D:\Project_CSC10004\Project_CSC10004\Project_CSC\Game_function.cpp(124,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  LeaderBoard.cpp
+  main.cpp
+  Register.cpp
+  Resume.cpp
+  Test.cpp
+  User_Auth.cpp
+  Generating Code...
+Test.obj : error LNK2005: main already defined in main.obj
+main.obj : error LNK2019: unresolved external symbol "bool __cdecl loginUser(struct UserNode *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?loginUser@@YA_NPEAUUserNode@@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z) referenced in function "void __cdecl mainMenu(void)" (?mainMenu@@YAXXZ)
 Register.obj : error LNK2019: unresolved external symbol "unsigned __int64 __cdecl hashedPassWord(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?hashedPassWord@@YA_KAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "struct UserNode * __cdecl registerUser(struct UserNode *)" (?registerUser@@YAPEAUUserNode@@PEAU1@@Z)
 Register.obj : error LNK2019: unresolved external symbol "bool __cdecl confirmPassWord(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?confirmPassWord@@YA_NAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z) referenced in function "struct UserNode * __cdecl registerUser(struct UserNode *)" (?registerUser@@YAPEAUUserNode@@PEAU1@@Z)
 Register.obj : error LNK2019: unresolved external symbol "struct UserNode * __cdecl insertUserNode(struct UserNode *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?insertUserNode@@YAPEAUUserNode@@PEAU1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z) referenced in function "struct UserNode * __cdecl registerUser(struct UserNode *)" (?registerUser@@YAPEAUUserNode@@PEAU1@@Z)
 User_Auth.obj : error LNK2001: unresolved external symbol "struct UserNode * __cdecl insertUserNode(struct UserNode *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?insertUserNode@@YAPEAUUserNode@@PEAU1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@1@Z)
 Register.obj : error LNK2019: unresolved external symbol "struct UserNode * __cdecl findUser(struct UserNode *,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?findUser@@YAPEAUUserNode@@PEAU1@AEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "struct UserNode * __cdecl registerUser(struct UserNode *)" (?registerUser@@YAPEAUUserNode@@PEAU1@@Z)
-C:\Users\namnq\OneDrive\Máy tính\Project_CSC1004\Project_CSC\x64\Debug\Project_CSC.exe : fatal error LNK1120: 5 unresolved externals
+D:\Project_CSC10004\Project_CSC10004\Project_CSC\x64\Debug\Project_CSC.exe : fatal error LNK1120: 5 unresolved externals
