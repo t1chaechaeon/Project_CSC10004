@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Game_function.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
@@ -99,26 +99,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Menu.cpp",
               "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.cpp",
               "RelativeDocumentMoniker": "Menu.cpp",
-              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.cpp*",
-              "RelativeToolTip": "Menu.cpp*",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAHMAAAANAAAAAAAAAA==",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.cpp",
+              "RelativeToolTip": "Menu.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-28T06:39:56.01Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Menu.h",
               "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.h",
               "RelativeDocumentMoniker": "Menu.h",
               "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.h",
               "RelativeToolTip": "Menu.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2025-03-28T06:53:46.257Z",
               "EditorCaption": ""
