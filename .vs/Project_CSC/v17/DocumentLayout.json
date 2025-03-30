@@ -1,0 +1,251 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Menu.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Menu.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Game_function.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Game_function.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Resume.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Resume.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Resume.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Resume.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Game_function.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Game_function.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\LoginUser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:LoginUser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\loginUser.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:loginUser.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\User_Auth.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:User_Auth.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Register.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Register.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Register.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:Register.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\LeaderBoard.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:LeaderBoard.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\User_Auth.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{334E3489-43D3-4094-884C-20EAB3C55E09}|Project_CSC.vcxproj|solutionrelative:User_Auth.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "main.cpp",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-27T16:38:27.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Game_function.cpp",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Game_function.cpp",
+              "RelativeDocumentMoniker": "Game_function.cpp",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Game_function.cpp",
+              "RelativeToolTip": "Game_function.cpp",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAAAHYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-28T06:36:15.953Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Menu.cpp",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.cpp",
+              "RelativeDocumentMoniker": "Menu.cpp",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.cpp",
+              "RelativeToolTip": "Menu.cpp",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAADkAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-28T06:39:56.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Menu.h",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.h",
+              "RelativeDocumentMoniker": "Menu.h",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Menu.h",
+              "RelativeToolTip": "Menu.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-28T06:53:46.257Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Resume.h",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Resume.h",
+              "RelativeDocumentMoniker": "Resume.h",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Resume.h",
+              "RelativeToolTip": "Resume.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-28T09:24:24.839Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginUser.cpp",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\LoginUser.cpp",
+              "RelativeDocumentMoniker": "LoginUser.cpp",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\LoginUser.cpp",
+              "RelativeToolTip": "LoginUser.cpp",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABwAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-28T07:01:47.941Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoginUser.h",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\LoginUser.h",
+              "RelativeDocumentMoniker": "LoginUser.h",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\LoginUser.h",
+              "RelativeToolTip": "LoginUser.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-28T07:01:24.969Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "User_Auth.cpp",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\User_Auth.cpp",
+              "RelativeDocumentMoniker": "User_Auth.cpp",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\User_Auth.cpp",
+              "RelativeToolTip": "User_Auth.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-28T06:54:00.352Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Resume.cpp",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Resume.cpp",
+              "RelativeDocumentMoniker": "Resume.cpp",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Resume.cpp",
+              "RelativeToolTip": "Resume.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-28T09:23:53.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Game_function.h",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Game_function.h",
+              "RelativeDocumentMoniker": "Game_function.h",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Game_function.h",
+              "RelativeToolTip": "Game_function.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-28T06:41:34.071Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LeaderBoard.cpp",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\LeaderBoard.cpp",
+              "RelativeDocumentMoniker": "LeaderBoard.cpp",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\LeaderBoard.cpp",
+              "RelativeToolTip": "LeaderBoard.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-28T06:35:58.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Register.h",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Register.h",
+              "RelativeDocumentMoniker": "Register.h",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Register.h",
+              "RelativeToolTip": "Register.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-28T06:35:33.438Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Register.cpp",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Register.cpp",
+              "RelativeDocumentMoniker": "Register.cpp",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\Register.cpp",
+              "RelativeToolTip": "Register.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-28T06:35:39.848Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "User_Auth.h",
+              "DocumentMoniker": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\User_Auth.h",
+              "RelativeDocumentMoniker": "User_Auth.h",
+              "ToolTip": "D:\\Project_CSC10004\\Project_CSC10004\\Project_CSC\\User_Auth.h",
+              "RelativeToolTip": "User_Auth.h",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-28T07:04:53.443Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
