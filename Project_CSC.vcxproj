@@ -145,6 +145,9 @@
     <ClInclude Include="Resume.h" />
     <ClInclude Include="User_Auth.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="users.dat" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-#include <functional>
 
 using namespace std;
 
@@ -31,8 +30,6 @@ UserNode* insertUserNode(UserNode* root, const string& username, const string& p
 // Hàm tìm kiếm người dùng trong BST
 UserNode* findUser(UserNode* root, const string& username);
 
-// Hàm đăng nhập
-bool loginUser(UserNode* root, const string& username, const string& passWord);
 // Ghi dữ liệu user xuống file(Duyệt cây theo thứ tự NLR)
 void saveUsersToFile(UserNode * root, ofstream & outFile);
 // Đọc dữ liệu user từ file

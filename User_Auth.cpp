@@ -6,9 +6,11 @@ using namespace std;
 
 // Hàm mã hóa mật khẩu
 size_t hashPassWord(const string& password) {
-    hash<string> hasher;
-    size_t hashed = hasher(password);
-    return hashed;
+    size_t hash = 0;
+    for (char c : password) {
+        hash = (hash * 31) + c; // Nhân với 31 giúp giảm collision
+    }
+    return hash;
 }
 
 // Xác thực lại mật khẩu 2 lần
@@ -58,23 +60,7 @@ UserNode* findUser(UserNode* root, const string& username) {
     }
     return root;
 }
-// Hàm đăng nhập
-bool loginUser(UserNode* root, const string& username, const string& passWord) {
-    if (root == nullptr) {
-        return false; // Node rỗng, người dùng không tồn tại
-    }
-    // So sánh username với root
-    if (username == root->username) {
-        // Kiểm tra mật khẩu đã băm (hashed password)
-        return root->hashedPassword == hashPassWord(passWord);
-    }
-    else if (username < root->username) {
-        return loginUser(root->left, username, passWord);
-    }
-    else {
-        return loginUser(root->right, username, passWord);
-    }
-}
+
 // Đọc dữ liệu user từ file
 UserNode* loadUsersFromFile(const string& filename) {
     ifstream inFile(filename, ios::binary);
