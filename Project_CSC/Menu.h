@@ -8,7 +8,7 @@
 #include "Game_function.h"
 #include "LeaderBoard.h"
 #include "Resume.h"
-
+#include <conio.h> // Thư viện cho getch()
 
 using namespace std;
 

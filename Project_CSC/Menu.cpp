@@ -3,6 +3,7 @@
 #include <fstream>
 #include <cctype>
 
+
 using namespace std;
 
 
@@ -32,7 +33,7 @@ void playGame() {
     while (running) {
         printMatrix(gameBoard, BOARD_SIZE, score);
         cout << "Enter move (WASD - Move, U - Undo, R - Redo, S - Save & Exit): ";
-        cin >> move;
+        move = _getch(); // Nhận ký tự trực tiếp, không cần Enter
 
         switch (toupper(move)) {
         case 'W': running = move_to_Up(gameBoard, BOARD_SIZE, score); break;
@@ -79,6 +80,11 @@ void mainMenu() {
 
     while (true) {
 
+        //Xoa man hinh console
+    #if defined(_WIN32)
+            system("cls"); // Xóa màn hình trên Windows
+
+    #endif
         // Menu chỉ hiển thị lại sau khi một hành động kết thúc
         cout << "1. Register\n";
         cout << "2. Login & New Game\n";
@@ -133,5 +139,9 @@ void mainMenu() {
         default:
             cout << "Invalid choice! Try again.\n";
         }
+        // Pause to allow the user to see the output before clearing the screen again
+        cout << "\nPress Enter to continue...";
+        cin.ignore();
+        cin.get();
     }
 }
