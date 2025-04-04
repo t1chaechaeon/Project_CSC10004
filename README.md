@@ -25,7 +25,7 @@ This project is an implementation of the **2048 Game** as part of the **Data Str
 ## 📂 File Structure
 ```
 Project_CSC10004/
-│── Project_CSC/         # Source code files
+│── Project_CSC101/         # Source code files
 │── README.md            # Project documentation
 ```
 
