@@ -92,12 +92,15 @@ bool checkWin(int** matrix, int n) {
 
 // Sinh ô mới
 void spawnNewTile(int** matrix, int n) {
-    srand(time(0));
+    srand(time(0)); // Gọi lại srand mỗi lần tạo ô mới (không khuyến khích)
+
     int x, y;
     do {
         x = rand() % n;
         y = rand() % n;
-    } while (matrix[x][y] != 0);
+    } while (matrix[x][y] != 0); // Lặp đến khi tìm được ô trống
+
+    // Gán giá trị mới vào ô trống
     matrix[x][y] = (rand() % 10 == 0) ? 4 : 2;
 }
 
@@ -112,14 +115,24 @@ void printMatrix(int** matrix, int n, unsigned int score) {
     }
 }
 
-// Copy ma trận
 void copyMatrix(int** src, int**& dest, int n) {
-    if (dest == nullptr) {
-        dest = new int* [n];
+    if (src == nullptr || n <= 0) return;
+
+    // Giải phóng bộ nhớ nếu dest đã tồn tại
+    if (dest != nullptr) {
         for (int i = 0; i < n; i++) {
-            dest[i] = new int[n];
+            delete[] dest[i];
         }
+        delete[] dest;
     }
+
+    // Cấp phát bộ nhớ mới cho dest
+    dest = new int* [n];
+    for (int i = 0; i < n; i++) {
+        dest[i] = new int[n];
+    }
+
+    // Sao chép dữ liệu từ src sang dest
     for (int i = 0; i < n; i++) {
         memcpy(dest[i], src[i], n * sizeof(int));
     }

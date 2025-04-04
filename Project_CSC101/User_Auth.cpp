@@ -6,9 +6,11 @@ using namespace std;
 
 // Hàm mã hóa mật khẩu
 size_t hashPassWord(const string& password) {
-    hash<string> hasher;
-    size_t hashed = hasher(password);
-    return hashed;
+    size_t hash = 0;
+    for (char c : password) {
+        hash = (hash * 31) + c; // Nhân với số nguyên tố 31 để tăng tính phân tán
+   }
+    return hash;
 }
 
 // Xác thực lại mật khẩu 2 lần
