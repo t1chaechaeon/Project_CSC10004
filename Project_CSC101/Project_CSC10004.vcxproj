@@ -133,6 +133,7 @@
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Register.h" />
     <ClInclude Include="Resume.h" />
+    <ClInclude Include="Stack.h" />
     <ClInclude Include="User_Auth.h" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +144,7 @@
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Register.cpp" />
     <ClCompile Include="Resume.cpp" />
+    <ClCompile Include="Stack.cpp" />
     <ClCompile Include="User_Auth.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

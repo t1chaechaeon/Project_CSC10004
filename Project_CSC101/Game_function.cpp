@@ -1,13 +1,13 @@
 ﻿#include "Game_function.h"
+#include "Stack.h"
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
 #include <cstring>
 
-// Khai báo biến toàn cục để lưu trạng thái Undo/Redo
-int historyIndex = 0, historyCount = 0;
-int*** history = new int** [HISTORY_SIZE];
-unsigned int historyScore[HISTORY_SIZE];
+Stack undoStack;
+Stack redoStack;
+
 
 // Tạo ma trận game
 void createMatrix(int**& matrix, int n) {
@@ -15,9 +15,8 @@ void createMatrix(int**& matrix, int n) {
     for (int i = 0; i < n; i++) {
         matrix[i] = new int[n]();
     }
-    spawnNewTile(matrix, n);
-    spawnNewTile(matrix, n);
 }
+
 
 // Giải phóng bộ nhớ
 void freeMatrix(int**& matrix, int n) {
@@ -115,20 +114,19 @@ void printMatrix(int** matrix, int n, unsigned int score) {
     }
 }
 
+// Sao chép ma trận
 void copyMatrix(int** src, int**& dest, int n) {
-    if (src == nullptr || n <= 0) return;
+    if (src == nullptr || dest == nullptr || n <= 0) return;
 
     // Giải phóng bộ nhớ nếu dest đã tồn tại
-    if (dest != nullptr) {
-        for (int i = 0; i < n; i++) {
-            delete[] dest[i];
-        }
-        delete[] dest;
+    for (int i = 0; i < n; ++i) {
+        delete[] dest[i];
     }
+    delete[] dest;
 
     // Cấp phát bộ nhớ mới cho dest
     dest = new int* [n];
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
         dest[i] = new int[n];
     }
 
@@ -138,30 +136,40 @@ void copyMatrix(int** src, int**& dest, int n) {
     }
 }
 
-// Lưu trạng thái Undo/Redo
-void saveState(int** matrix, int n, unsigned int score) {
-    copyMatrix(matrix, history[historyIndex], n);
-    historyScore[historyIndex] = score;
-    historyIndex = (historyIndex + 1) % HISTORY_SIZE;
-    if (historyCount < HISTORY_SIZE) historyCount++;
-}
-
-// Undo
+// Hàm Undo
 void undo(int**& matrix, int n, unsigned int& score) {
-    if (historyCount > 0) {
-        historyIndex = (historyIndex - 1 + HISTORY_SIZE) % HISTORY_SIZE;
-        copyMatrix(history[historyIndex], matrix, n);
-        score = historyScore[historyIndex];
-        historyCount--;
+    GameState prev;
+    if (!pop(undoStack, prev, n)) {
+        std::cout << "No more undo!\n";
+        return;
     }
+    push(redoStack, matrix, n, score); // Lưu trạng thái hiện tại vào redo
+
+    // Sao chép prev.matrix vào matrix
+    copyMatrix(prev.matrix, matrix, n);
+    score = prev.score;
+
+    // Giải phóng prev.matrix sau khi sao chép
+    for (int i = 0; i < n; ++i) delete[] prev.matrix[i];
+    delete[] prev.matrix;
 }
 
-// Redo
+
+
+// Hàm Redo
 void redo(int**& matrix, int n, unsigned int& score) {
-    if (historyCount < HISTORY_SIZE) {
-        copyMatrix(history[historyIndex], matrix, n);
-        score = historyScore[historyIndex];
-        historyIndex = (historyIndex + 1) % HISTORY_SIZE;
-        historyCount++;
+    GameState next;
+    if (!pop(redoStack, next, n)) {
+        std::cout << "No more redo!\n";
+        return;
     }
+    push(undoStack, matrix, n, score); // Lưu trạng thái hiện tại vào undo
+
+    // Sao chép next.matrix vào matrix
+    copyMatrix(next.matrix, matrix, n);
+    score = next.score;
+
+    // Giải phóng next.matrix sau khi sao chép
+    for (int i = 0; i < n; ++i) delete[] next.matrix[i];
+    delete[] next.matrix;
 }

@@ -1,9 +1,13 @@
 ﻿#include "Menu.h"
+#include "Stack.h"
 #include <iostream>
 #include <fstream>
 #include <cctype>
 
 using namespace std;
+
+extern Stack undoStack;
+extern Stack redoStack;
 
 
 #define BOARD_SIZE 4 // Kích thước bảng 4x4
@@ -22,84 +26,96 @@ void exitGame() {
 
 // Chơi game 2048
 void playGame() {
-    createMatrix(gameBoard, BOARD_SIZE);
+    createMatrix(gameBoard, BOARD_SIZE); // khởi tạo board
     spawnNewTile(gameBoard, BOARD_SIZE);
     spawnNewTile(gameBoard, BOARD_SIZE);
 
     bool running = true;
 
     while (running) {
-    #if defined(_WIN32)
-        system("cls"); // Xóa màn hình trên Windows
-
-    #endif
+#if defined(_WIN32)
+        system("cls");
+#endif
         printMatrix(gameBoard, BOARD_SIZE, score);
-        cout << "Use arrow keys to move, U - Undo, R - Redo, S - save & Exit\n";
+        cout << "Use arrow keys to move, U - Undo, R - Redo, S - Save & Exit\n";
 
         char move = _getch();
+        bool moved = false;
 
-        if (move == -32) { // Kiểm tra nếu là phím mũi tên
-            move = _getch(); // Nhận giá trị phím mũi tên tiếp theo
+        if (move == -32) {
+            move = _getch();
+
+            // Trước khi thực hiện di chuyển, lưu trạng thái vào undoStack
+            push(undoStack, gameBoard, BOARD_SIZE, score);
+            freeStack(redoStack, BOARD_SIZE); // mỗi lần di chuyển mới sẽ xoá redo stack
 
             switch (move) {
-            case 72: running = move_to_Up(gameBoard, BOARD_SIZE, score); break;
-            case 80: running = move_to_Down(gameBoard, BOARD_SIZE, score); break;
-            case 75: running = move_to_Left(gameBoard, BOARD_SIZE, score); break;
-            case 77: running = move_to_Right(gameBoard, BOARD_SIZE, score); break;
-            default: cout << "Invalid move! Try again.\n";
+            case 72: moved = move_to_Up(gameBoard, BOARD_SIZE, score); break;
+            case 80: moved = move_to_Down(gameBoard, BOARD_SIZE, score); break;
+            case 75: moved = move_to_Left(gameBoard, BOARD_SIZE, score); break;
+            case 77: moved = move_to_Right(gameBoard, BOARD_SIZE, score); break;
+            default:
+                cout << "Invalid move! Try again.\n";
                 cout << "Press Enter to continue.";
                 cin.get();
-               
-                playGame();
+                continue;
+            }
+
+            if (moved) {
+                spawnNewTile(gameBoard, BOARD_SIZE);
+            }
+            else {
+                // Nếu không có di chuyển, hủy push trước đó
+                GameState discarded;
+                pop(undoStack, discarded, BOARD_SIZE);
+                freeMatrix(discarded.matrix, BOARD_SIZE);
             }
         }
         else {
             switch (toupper(move)) {
-
-            case 'U': undo(gameBoard, BOARD_SIZE, score); break;
-            case 'R': redo(gameBoard, BOARD_SIZE, score); break;
-            case 'S': {
+            case 'U':
+                undo(gameBoard, BOARD_SIZE, score);
+                break;
+            case 'R':
+                redo(gameBoard, BOARD_SIZE, score);
+                break;
+            case 'S':
                 saveGame(gameBoard, BOARD_SIZE, score);
                 cout << "Game saved! Returning to menu...\n";
                 return;
-            }
             default:
-                cout << "Invalid move! Try again.\n";
-                cout << "\nPree Enter to continue...";
+                cout << "Invalid key! Try again.\n";
+                cout << "Press Enter to continue...";
                 cin.get();
-                
-                playGame();
             }
         }
 
         if (checkWin(gameBoard, BOARD_SIZE)) {
             cout << "Congratulations! You won the game!\n";
-            cout << "\nPree Enter to return to menu...";
+            cout << "\nPress Enter to return to menu...";
             cin.get();
-          
             mainMenu();
+            return;
         }
         else if (checkGameOver(gameBoard, BOARD_SIZE)) {
             cout << "Game Over!\n";
-            cout << "\nPree Enter to return to menu...";
+            cout << "\nPress Enter to return to menu...";
             cin.get();
-            
             mainMenu();
+            return;
         }
-        else {
-            spawnNewTile(gameBoard, BOARD_SIZE);
-        }
-}
+    }
 
-    // Lưu điểm vào bảng xếp hạng
+    // Kết thúc game: lưu điểm người chơi
     leaderboardTree = insertNode(leaderboardTree, "Player", score);
     ofstream outFile("leaderboard.dat", ios::binary);
     saveToFile(leaderboardTree, outFile);
     outFile.close();
 
     freeMatrix(gameBoard, BOARD_SIZE);
-
 }
+
+
 // Hiển thị menu chính
 void mainMenu() {
 
