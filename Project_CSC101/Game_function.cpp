@@ -139,19 +139,28 @@ void copyMatrix(int** src, int**& dest, int n) {
 // Hàm Undo
 void undo(int**& matrix, int n, unsigned int& score) {
     GameState prev;
+
+    // Kiểm tra xem undoStack có trống không
     if (!pop(undoStack, prev, n)) {
         std::cout << "No more undo!\n";
         return;
     }
-    push(redoStack, matrix, n, score); // Lưu trạng thái hiện tại vào redo
 
-    // Sao chép prev.matrix vào matrix
-    copyMatrix(prev.matrix, matrix, n);
+    // Lưu trạng thái hiện tại vào redoStack trước khi Undo
+    push(redoStack, matrix, n, score);
+
+    // Giải phóng bộ nhớ ma trận hiện tại để tránh rò rỉ bộ nhớ
+    for (int i = 0; i < n; ++i) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+
+    // Sao chép ma trận từ trạng thái trước khi Undo vào ma trận hiện tại
+    matrix = prev.matrix;
     score = prev.score;
 
-    // Giải phóng prev.matrix sau khi sao chép
-    for (int i = 0; i < n; ++i) delete[] prev.matrix[i];
-    delete[] prev.matrix;
+    // Giải phóng bộ nhớ ma trận của GameState prev sau khi sao chép
+    prev.matrix = nullptr;  // Tránh giải phóng nhiều lần
 }
 
 
@@ -159,17 +168,26 @@ void undo(int**& matrix, int n, unsigned int& score) {
 // Hàm Redo
 void redo(int**& matrix, int n, unsigned int& score) {
     GameState next;
+
+    // Kiểm tra xem redoStack có trống không
     if (!pop(redoStack, next, n)) {
         std::cout << "No more redo!\n";
         return;
     }
-    push(undoStack, matrix, n, score); // Lưu trạng thái hiện tại vào undo
 
-    // Sao chép next.matrix vào matrix
-    copyMatrix(next.matrix, matrix, n);
+    // Lưu trạng thái hiện tại vào undoStack trước khi Redo
+    push(undoStack, matrix, n, score);
+
+    // Giải phóng bộ nhớ ma trận hiện tại để tránh rò rỉ bộ nhớ
+    for (int i = 0; i < n; ++i) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+
+    // Sao chép ma trận từ trạng thái tiếp theo vào ma trận hiện tại
+    matrix = next.matrix;
     score = next.score;
 
-    // Giải phóng next.matrix sau khi sao chép
-    for (int i = 0; i < n; ++i) delete[] next.matrix[i];
-    delete[] next.matrix;
+    // Giải phóng bộ nhớ ma trận của GameState next sau khi sao chép
+    next.matrix = nullptr;  // Tránh giải phóng nhiều lần
 }

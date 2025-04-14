@@ -1,4 +1,6 @@
 ﻿#include "Resume.h"
+#include <iostream>
+#include <fstream>
 
 #define SAVE_FILE "savegame.dat"
 
@@ -38,7 +40,7 @@ bool loadGame(int**& matrix, int n, unsigned int& score) {
 
     inFile.read(reinterpret_cast<char*>(&score), sizeof(score));
 
-    // Khởi tạo lại ma trận nếu cần
+    // Chỉ khởi tạo lại ma trận nếu nó chưa tồn tại
     if (matrix == nullptr) {
         matrix = new int* [n];
         for (int i = 0; i < n; ++i) {
