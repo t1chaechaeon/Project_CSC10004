@@ -5,6 +5,7 @@
 #include <cctype>
 
 using namespace std;
+std::string currentUsername;
 
 extern Stack undoStack;
 extern Stack redoStack;
@@ -23,10 +24,12 @@ void exitGame() {
 }
 
 // Chơi game 2048
-void playGame() {
-    createMatrix(gameBoard, BOARD_SIZE); // Khởi tạo board
-    spawnNewTile(gameBoard, BOARD_SIZE);
-    spawnNewTile(gameBoard, BOARD_SIZE);
+void playGame(bool isResumed = false) {
+    if (!isResumed) {
+        createMatrix(gameBoard, BOARD_SIZE); // Chỉ tạo khi không resume
+        spawnNewTile(gameBoard, BOARD_SIZE);
+        spawnNewTile(gameBoard, BOARD_SIZE);
+    }
 
     bool running = true;
 
@@ -144,12 +147,12 @@ void mainMenu() {
                 break;
             case 2:
                 loginProcess(userTree);
-                playGame();
+                playGame(false);
                 break;
             case 3:
                 if (loadGame(gameBoard, BOARD_SIZE, score)) {
                     cout << "Game loaded successfully!\n";
-                    playGame();
+                    playGame(true); // Đánh dấu là đang resume
                 }
                 else {
                     cout << "No saved game found!\n";

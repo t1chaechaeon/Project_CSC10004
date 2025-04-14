@@ -40,13 +40,18 @@ bool loadGame(int**& matrix, int n, unsigned int& score) {
 
     inFile.read(reinterpret_cast<char*>(&score), sizeof(score));
 
-    // Chỉ khởi tạo lại ma trận nếu nó chưa tồn tại
-    if (matrix == nullptr) {
-        matrix = new int* [n];
-        for (int i = 0; i < n; ++i) {
-            matrix[i] = new int[n] {};
-        }
+    // Trước khi load, xóa ma trận cũ nếu có
+    if (matrix != nullptr) {
+        for (int i = 0; i < n; ++i) delete[] matrix[i];
+        delete[] matrix;
+        matrix = nullptr;
     }
+
+    // Cấp phát lại
+    matrix = new int* [n];
+    for (int i = 0; i < n; ++i)
+        matrix[i] = new int[n];
+
 
     // Đọc dữ liệu vào ma trận
     for (int i = 0; i < n; ++i) {
