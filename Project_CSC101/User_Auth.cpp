@@ -22,12 +22,16 @@ bool confirmPassWord(const string& passWord1, const string& passWord2) {
 void saveUsersToFile(UserNode* root, ofstream& outFile) {
     if (root == nullptr) return;
 
-    outFile.write(reinterpret_cast<char*>(&root->username), sizeof(root->username));
+    size_t len = root->username.size();
+    outFile.write(reinterpret_cast<char*>(&len), sizeof(len)); // Ghi độ dài tên
+    outFile.write(root->username.c_str(), len);                // Ghi tên
+
     outFile.write(reinterpret_cast<char*>(&root->hashedPassword), sizeof(root->hashedPassword));
 
     saveUsersToFile(root->left, outFile);
     saveUsersToFile(root->right, outFile);
 }
+
 // Chèn tài khoản người dùng vào BST 
 UserNode* insertUserNode(UserNode* root, const string& username, const string& passWord)
 {
@@ -83,12 +87,20 @@ UserNode* loadUsersFromFile(const string& filename) {
     if (!inFile) return nullptr;
 
     UserNode* root = nullptr;
-    string username;
-    size_t hashedPassword;
 
-    while (inFile.read(reinterpret_cast<char*>(&username), sizeof(username))) {
+    while (!inFile.eof()) {
+        size_t len;
+        if (!inFile.read(reinterpret_cast<char*>(&len), sizeof(len))) break;
+
+        string username(len, ' ');
+        inFile.read(&username[0], len);
+
+        size_t hashedPassword;
         inFile.read(reinterpret_cast<char*>(&hashedPassword), sizeof(hashedPassword));
-        root = insertUserNode(root, username, to_string(hashedPassword)); // Chèn vào BST
+
+        // Dùng password giả để lưu (vì đã băm rồi)
+        root = insertUserNode(root, username, to_string(hashedPassword));
+        root->hashedPassword = hashedPassword; // Gán đúng hash (vì hàm insert băm lại)
     }
 
     inFile.close();
