@@ -5,6 +5,8 @@
 
 using namespace std;
 
+void deleteSavedGame();
+
 // Lưu trạng thái game vào file nhị phân
 void saveGame(int** matrix, int n, unsigned int score);
 

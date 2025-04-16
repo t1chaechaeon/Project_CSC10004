@@ -13,8 +13,6 @@
 
 using namespace std;
 
-// Chơi game 2048
-void playGame();
 // Hiển thị menu chính
 void mainMenu();
 // Hàm thoát game

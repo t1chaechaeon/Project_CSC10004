@@ -1,26 +1,38 @@
 ﻿#include "LeaderBoard.h"
+#include <iomanip>
 
-// Hàm chèn người chơi vào BST
-BSTNode* insertNode(BSTNode* root, const string& username, int score) {
-    if (root == nullptr) return new BSTNode(username, score);
+BSTNode* insertNode(BSTNode* root, const string& username, unsigned int score) {
+    if (root == nullptr) {
+        BSTNode* newNode = new BSTNode;
+        newNode->username = username;
+        newNode->score = score;
+        newNode->left = newNode->right = nullptr;
+        return newNode;
+    }
 
-    if (score > root->score) {
-        root->right = insertNode(root->right, username, score); // Chèn vào nhánh phải (điểm cao hơn)
+    if (username == root->username) {
+        // Nếu tên người chơi trùng nhau, cập nhật điểm nếu điểm mới cao hơn
+        if (score > root->score) {
+            root->score = score;
+        }
+    }
+    else if (score > root->score) {
+        root->right = insertNode(root->right, username, score); // Chèn sang phải nếu điểm cao hơn
+    }
+    else if (score < root->score) {
+        root->left = insertNode(root->left, username, score);   // Chèn sang trái nếu điểm thấp hơn
     }
     else {
-        root->left = insertNode(root->left, username, score); // Chèn vào nhánh trái (điểm thấp hơn)
+        // Nếu điểm bằng nhau thì so sánh theo tên để phân biệt
+        if (username < root->username) {
+            root->left = insertNode(root->left, username, score);
+        }
+        else {
+            root->right = insertNode(root->right, username, score);
+        }
     }
 
     return root;
-}
-
-// Hàm duyệt cây theo thứ tự giảm dần để hiển thị bảng xếp hạng (từ cao xuống thấp)
-void inOrderTraversal(BSTNode* root) {
-    if (root == nullptr) return;
-
-    inOrderTraversal(root->right); // In điểm cao trước
-    cout << root->username << " - " << root->score << endl;
-    inOrderTraversal(root->left);
 }
 
 // Lưu bảng xếp hạng vào file nhị phân (Duyệt cây theo thứ tự giảm dần)
@@ -55,6 +67,39 @@ BSTNode* loadFromFile(ifstream& inFile) {
         root = insertNode(root, username, score);
     }
     return root;
+}
+
+// Hàm duyệt cây theo thứ tự giảm dần để hiển thị bảng xếp hạng (từ cao xuống thấp)
+void PrintLeaderboard(BSTNode* root) {
+    if (root == nullptr) return;
+
+    static int rank = 1; // Giữ thứ hạng giữa các lần gọi đệ quy
+
+    // In tiêu đề bảng 1 lần duy nhất
+    static bool headerPrinted = false;
+    if (!headerPrinted) {
+        cout << left << setw(5) << "No."
+             << left << setw(20) << "Player"
+             << right << setw(10) << "Score" << endl;
+        cout << string(35, '-') << endl;
+        headerPrinted = true;
+    }
+
+    // Duyệt cây theo thứ tự giảm dần
+    PrintLeaderboard(root->right);
+
+    // In thông tin người chơi
+    cout << left << setw(5) << rank++
+         << left << setw(20) << root->username
+         << right << setw(10) << root->score << endl;
+
+    PrintLeaderboard(root->left);
+
+    // Reset lại khi kết thúc duyệt cây
+    if (rank == 2) {
+        rank = 1;
+        headerPrinted = false;
+    }
 }
 
 // Hàm giải phóng bộ nhớ BST

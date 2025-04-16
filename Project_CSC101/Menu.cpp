@@ -4,6 +4,7 @@
 #include <fstream>
 #include <cctype>
 
+
 using namespace std;
 std::string currentUsername;
 
@@ -11,21 +12,35 @@ extern Stack undoStack;
 extern Stack redoStack;
 
 #define BOARD_SIZE 4 // Kích thước bảng 4x4
+#define SAVE_FILE "savegame.dat";
 
 // Biến lưu trạng thái game
 int** gameBoard = nullptr;
 unsigned int score = 0;
 UserNode* userTree = nullptr;        // Cây BST lưu user
 BSTNode* leaderboardTree = nullptr;  // Cây BST lưu điểm số
+UserNode* loggedInUser = nullptr;
 
+// Đặt lại trạng thái trò chơi về ban đầu
+void resetGameState() {
+    score = 0;
+    if (gameBoard != nullptr) {
+        freeMatrix(gameBoard, BOARD_SIZE);
+        gameBoard = nullptr;
+    }
+    clearStack(undoStack, BOARD_SIZE);
+    clearStack(redoStack, BOARD_SIZE);
+}
 // Hàm thoát game
 void exitGame() {
     cout << "Exiting game...\n";
 }
 
 // Chơi game 2048
-void playGame(bool isResumed = false) {
+void playGame(bool isResumed = false){
+   
     if (!isResumed) {
+        void resetGameState(); //// Reset toàn bộ trước khi bắt đầu game mới
         createMatrix(gameBoard, BOARD_SIZE); // Chỉ tạo khi không resume
         spawnNewTile(gameBoard, BOARD_SIZE);
         spawnNewTile(gameBoard, BOARD_SIZE);
@@ -74,8 +89,10 @@ void playGame(bool isResumed = false) {
                 break;
             case 'S':
                 saveGame(gameBoard, BOARD_SIZE, score);
+
                 cout << "Game saved! Returning to menu...\n";
                 return;
+
             default:
                 cout << "Invalid key! Try again.\n";
                 cout << "Press Enter to continue...";
@@ -83,32 +100,46 @@ void playGame(bool isResumed = false) {
             }
         }
 
-        // Kiểm tra Win và Game Over
+        // Kiểm tra thắng/thua
         if (checkWin(gameBoard, BOARD_SIZE)) {
+
             cout << "Congratulations! You won the game!\n";
+
+            // Lưu vào leaderboard
+            leaderboardTree = insertNode(leaderboardTree, userTree->username, score);
+            ofstream outFile("leaderboard.dat", ios::binary);
+            saveToFile(leaderboardTree, outFile);
+            outFile.close();
+
+            // Xoá save file sau khi kết thúc
+            deleteSavedGame();
+            freeMatrix(gameBoard, BOARD_SIZE);
+
             cout << "\nPress Enter to return to menu...";
             cin.get();
             mainMenu();
             return;
         }
-        else if (checkGameOver(gameBoard, BOARD_SIZE)) {
-            cout << "Game Over!\n";
-            cout << "\nPress Enter to return to menu...";
-            cin.get();
-            mainMenu();
-            return;
-        }
+
+            if (checkGameOver(gameBoard, BOARD_SIZE)) {
+   
+                cout << "Game Over!\n";
+                // Lưu vào leaderboard
+                leaderboardTree = insertNode(leaderboardTree,userTree->username ,score);
+                ofstream outFile("leaderboard.dat", ios::binary);
+                saveToFile(leaderboardTree, outFile);
+                outFile.close();
+
+                // Xoá save file sau khi kết thúc
+                deleteSavedGame();
+                freeMatrix(gameBoard, BOARD_SIZE);
+                cout << "\nPress Enter to return to menu...";
+                cin.get();
+                mainMenu();
+                return;
+            }
     }
-
-    // Kết thúc game: lưu điểm người chơi
-    leaderboardTree = insertNode(leaderboardTree, "Player", score);
-    ofstream outFile("leaderboard.dat", ios::binary);
-    saveToFile(leaderboardTree, outFile);
-    outFile.close();
-
-    freeMatrix(gameBoard, BOARD_SIZE);
 }
-
 
 // Hiển thị menu chính
 void mainMenu() {
@@ -143,11 +174,17 @@ void mainMenu() {
 
             switch (choice) {
             case 1:
-                userTree = registerUser(userTree);
+                userTree = resgisterUserProcess(userTree);
                 break;
             case 2:
+
+                // Reset toàn bộ trạng thái trước khi đăng nhập tài khoản mới
+                resetGameState();
+
+                // Đăng nhập
                 loginProcess(userTree);
                 playGame(false);
+
                 break;
             case 3:
                 if (loadGame(gameBoard, BOARD_SIZE, score)) {
@@ -162,9 +199,10 @@ void mainMenu() {
                 ifstream inFile("leaderboard.dat", ios::binary);
                 if (inFile) {
                     leaderboardTree = loadFromFile(inFile);
+                   
                     inFile.close();
                     cout << "Leaderboard:\n";
-                    inOrderTraversal(leaderboardTree);
+                    PrintLeaderboard(leaderboardTree);
                 }
                 else {
                     cout << "No leaderboard data found.\n";
@@ -178,7 +216,7 @@ void mainMenu() {
                 cout << "Invalid choice! Try again.\n";
             }
             cout << "\nPress Enter to continue...";
-            _getch();
+            (void)_getch();
         }
     }
 }

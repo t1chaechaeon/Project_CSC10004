@@ -4,40 +4,29 @@
 
 using namespace std;
 
-// Hàm mã hóa mật khẩu
-size_t hashPassWord(const string& password) {
-    size_t hash = 0;
-    for (char c : password) {
-        hash = (hash * 31) + c; // Nhân với số nguyên tố 31 để tăng tính phân tán
-   }
+// Hàm băm đơn giản (DJB2)
+unsigned long simpleHash(const string& str) {
+    unsigned long hash = 5381;
+    for (char c : str)
+        hash = ((hash << 5) + hash) + c;
     return hash;
 }
 
-// Xác thực lại mật khẩu 2 lần
-bool confirmPassWord(const string& passWord1, const string& passWord2) {
-    return passWord1 == passWord2;
-}
-
-// Ghi dữ liệu user xuống file (Duyệt cây theo thứ tự NLR)
-void saveUsersToFile(UserNode* root, ofstream& outFile) {
-    if (root == nullptr) return;
-
-    size_t len = root->username.size();
-    outFile.write(reinterpret_cast<char*>(&len), sizeof(len)); // Ghi độ dài tên
-    outFile.write(root->username.c_str(), len);                // Ghi tên
-
-    outFile.write(reinterpret_cast<char*>(&root->hashedPassword), sizeof(root->hashedPassword));
-
-    saveUsersToFile(root->left, outFile);
-    saveUsersToFile(root->right, outFile);
+// Tạo node mới
+UserNode* createUser(string uname, string pass) {
+    UserNode* node = new UserNode;
+    node->username = uname;
+    node->hashedPassword = simpleHash(pass);
+    node->left = node->right = nullptr;
+    return node;
 }
 
 // Chèn tài khoản người dùng vào BST 
-UserNode* insertUserNode(UserNode* root, const string& username, const string& passWord)
+UserNode* insertUserNode(UserNode* root, const string& username, string passWord)
 {
-    size_t hashedPassword = hashPassWord(passWord);
+
     if (root == nullptr) {
-        return new UserNode(username, hashedPassword);
+        return createUser(username, passWord);
     }
     if (root->username < username) {
         root->left = insertUserNode(root->left, username, passWord);
@@ -48,24 +37,34 @@ UserNode* insertUserNode(UserNode* root, const string& username, const string& p
 
     return root;
 }
-// Hàm tìm kiếm người dùng trong BST
-UserNode* findUser(UserNode* root, const string& username) {
-    if (root == nullptr) {
-        return root;
-    }
-    if (root->username == username) {
-        return root;
-    }
-    else if (root->username > username) {
-        root->left = findUser(root->left, username);
-    }
+  // Tìm người dùng + kiểm tra mật khẩu dùng trong BST
+    UserNode* searchUser(UserNode* root, string uname, string pass) {
+    if (!root) return nullptr;
+    if (uname < root->username)
+         return searchUser(root->left, uname, pass);
+    else if (uname > root->username)
+         return searchUser(root->right, uname, pass);
     else {
-        root->right = findUser(root->right, username);
+          if (pass == "") return root; // kiểm tra tồn tại username
+          if (root->hashedPassword == simpleHash(pass))
+             return root;
+             else
+             return nullptr;
+         }
+ }
+
+// Ghi dữ liệu user xuống file (Duyệt cây theo thứ tự NLR)
+    void saveToFile(UserNode* root, ofstream& out) {
+        if (!root) return;
+        saveToFile(root->left, out);
+        out << root->username << " " << root->hashedPassword << endl;
+        saveToFile(root->right, out);
     }
-    return root;
-}
+
+
 // Hàm đăng nhập
-bool loginUser(UserNode* root, const string& username, const string& passWord) {
+/*bool loginUser(UserNode* root, const string& username, const string& passWord) {
+
     if (root == nullptr) {
         return false; // Node rỗng, người dùng không tồn tại
     }
@@ -80,9 +79,27 @@ bool loginUser(UserNode* root, const string& username, const string& passWord) {
     else {
         return loginUser(root->right, username, passWord);
     }
+}*/
+// Đọc dữ liệu từ file
+UserNode* loadFromFile(const string& filename) {
+    ifstream in(filename);
+    string uname;
+    unsigned long hash;
+    UserNode* root = nullptr;
+
+    while (in >> uname >> hash) {
+        UserNode* node = new UserNode;
+        node->username = uname;
+        node->hashedPassword = hash;
+        node->left = node->right = nullptr;
+        root = insertUserNode(root, uname, ""); // Dùng insert để giữ đúng vị trí
+       UserNode* found = searchUser(root, uname, ""); 
+       if (found) found->hashedPassword = hash; // Gán lại hash
+    }
+    return root;
 }
 // Đọc dữ liệu user từ file
-UserNode* loadUsersFromFile(const string& filename) {
+/*UserNode* loadUsersFromFile(const string& filename) {
     ifstream inFile(filename, ios::binary);
     if (!inFile) return nullptr;
 
@@ -105,4 +122,4 @@ UserNode* loadUsersFromFile(const string& filename) {
 
     inFile.close();
     return root;
-}
+}*/

@@ -1,38 +1,44 @@
 ﻿#pragma once
 
 #include <iostream>
+#include "fstream"
 #include <string>
 
 using namespace std;
 
+// Hàm băm đơn giản (DJB2)
+unsigned long simpleHash(const string& str);
 // Cấu trúc cho xác thực người dùng (BST Node)
-struct UserNode {
-    string username;
-    size_t hashedPassword;
-    UserNode* left;
-    UserNode* right;
 
-    UserNode(const string& uname, size_t hPass)
-        : username(uname), hashedPassword(hPass), left(nullptr), right(nullptr) {
-    }
+struct UserNode {
+    string username = "";
+    unsigned long hashedPassword = 0;
+    UserNode* left = nullptr;
+    UserNode* right = nullptr;
 };
 
-
-// Hàm mã hóa mật khẩu
-size_t hashPassWord(const string& password);
-
-// Xác thực lại mật khẩu 2 lần
-bool confirmPassWord(const string& passWord1, const string& passWord2);
+// Tạo node mới
+UserNode* createUser(string uname, string pass);
 
 // Chèn tài khoản người dùng vào BST 
-UserNode* insertUserNode(UserNode* root, const string& username, const string& passWord);
+UserNode* insertUserNode(UserNode* root, const string& username, string passWord);
 
-// Hàm tìm kiếm người dùng trong BST
-UserNode* findUser(UserNode* root, const string& username);
+// Tìm người dùng + kiểm tra mật khẩu dùng trong BST
+UserNode* searchUser(UserNode* root, string uname, string pass);
+
+// Ghi dữ liệu user xuống file (Duyệt cây theo thứ tự NLR)
+void saveToFile(UserNode* root, ofstream& out);
+
+// Đọc dữ liệu từ file
+UserNode* loadFromFile(const string& filename);
+
+
+
+
 
 // Hàm đăng nhập
-bool loginUser(UserNode* root, const string& username, const string& passWord);
+/*bool loginUser(UserNode* root, const string& username, const string& passWord);
 // Ghi dữ liệu user xuống file(Duyệt cây theo thứ tự NLR)
 void saveUsersToFile(UserNode* root, ofstream& outFile);
 // Đọc dữ liệu user từ file
-UserNode* loadUsersFromFile(const string& filename);
+UserNode* loadUsersFromFile(const string& filename);*/

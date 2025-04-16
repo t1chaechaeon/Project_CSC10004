@@ -1,39 +1,34 @@
 ﻿#include "Register.h"
 #include <fstream>
 
-UserNode* registerUser(UserNode* root) {
-    string username, password, confirmPassword;
-
-    cout << "Enter new username: ";
+// Xác thực lại mật khẩu 2 lần
+bool confirmPassWord(const string& passWord1, const string& passWord2) {
+    return passWord1 == passWord2;
+}
+// Đăng ký + nhập dữ liệu
+UserNode* resgisterUserProcess(UserNode* root) {
+    string username;
+    string password1;
+    string password2;
+    cout << "Enter username: ";
     cin >> username;
-
-    if (findUser(root, username) != nullptr) {
+    if (searchUser(root, username, "") != nullptr) {
         cout << "Username already exists! Try again.\n";
         return root;
     }
 
     cout << "Enter password: ";
-    cin >> password;
-    cout << "Confirm password: ";
-    cin >> confirmPassword;
+    cin >> password1;
+    
+    cout << "Enter password again: ";
+    cin >> password2;
 
-    if (!confirmPassWord(password, confirmPassword)) {
-        cout << "Passwords do not match! Try again.\n";
+    if (!confirmPassWord(password1, password2)) {
+        cout << "The password you enterd is incorrect. Please try again.";
         return root;
     }
 
-    // Chèn user vào BST
-    root = insertUserNode(root, username, password);
-
-    // Ghi xuống file ngay sau khi đăng ký
-    ofstream outFile("users.dat", ios::binary | ios::app);
-    if (outFile) {
-        outFile.write(reinterpret_cast<char*>(&username), sizeof(username));
-        size_t hashedPwd = hashPassWord(password);
-        outFile.write(reinterpret_cast<char*>(&hashedPwd), sizeof(hashedPwd));
-        outFile.close();
-    }
-
-    cout << "Registration successful! Account saved.\n";
+    root = insertUserNode(root, username, password1);
+    cout << "Registration successful.\n";
     return root;
 }

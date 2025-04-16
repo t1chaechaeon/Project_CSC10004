@@ -4,9 +4,18 @@
 
 #define SAVE_FILE "savegame.dat"
 
+using namespace std;
+
+
+void deleteSavedGame() {
+    string currentUsername;
+    string saveFile = currentUsername + SAVE_FILE;
+    remove(saveFile.c_str()); // Xoá file nếu tồn tại
+}
+
 // Lưu trạng thái game vào file nhị phân
 void saveGame(int** matrix, int n, unsigned int score) {
-    std::ofstream outFile(SAVE_FILE, std::ios::binary);
+    ofstream outFile(SAVE_FILE, ios::binary);
     if (!outFile) {
         std::cerr << "Khong the mo file de luu game!" << std::endl;
         return;
@@ -25,6 +34,7 @@ void saveGame(int** matrix, int n, unsigned int score) {
 
 // Tải trạng thái game từ file nhị phân
 bool loadGame(int**& matrix, int n, unsigned int& score) {
+
     std::ifstream inFile(SAVE_FILE, std::ios::binary);
     if (!inFile) {
         std::cerr << "Khong the tai game!" << std::endl;

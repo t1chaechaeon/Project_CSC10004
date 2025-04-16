@@ -12,22 +12,18 @@ struct BSTNode {
     BSTNode* left;
     BSTNode* right;
 
-    BSTNode(const string& uname, int scr)
-        : username(uname), score(scr), left(nullptr), right(nullptr) {
-    }
 };
-
 // Chèn người chơi vào BST
-BSTNode* insertNode(BSTNode* root, const string& username, int score);
+BSTNode* insertNode(BSTNode* root, const string& username, unsigned int score);
 
-// Duyệt cây theo thứ tự giảm dần để hiển thị bảng xếp hạng
-void inOrderTraversal(BSTNode* root);
-
-// Lưu bảng xếp hạng vào tập tin nhị phân
-void saveToFile(BSTNode* root, ofstream& outFile);
+// Hàm lưu BST vào file nhị phân theo thứ tự giảm dần
+void saveToFile(BSTNode* root, ofstream& out);
 
 // Tải bảng xếp hạng từ tập tin nhị phân
 BSTNode* loadFromFile(ifstream& inFile);
+
+// Duyệt cây theo thứ tự giảm dần để hiển thị bảng xếp hạng
+void PrintLeaderboard(BSTNode* root);
 
 // Giải phóng bộ nhớ của BST
 void deleteBST(BSTNode* root);
