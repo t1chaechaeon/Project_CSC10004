@@ -127,7 +127,7 @@ void playGame(bool isResumed = false) {
 
         // Win
         if (checkWin(gameBoard, BOARD_SIZE)) {
-            cout << "🎉 Congratulations! You won!\n";
+            cout << "Congratulations! You won!\n";
             leaderboardTree = insertNode(leaderboardTree, userTree->username, score);
             ofstream outFile("leaderboard.dat", ios::binary);
             saveToFile(leaderboardTree, outFile);
@@ -165,7 +165,7 @@ void drawMenuOption(int index, int currentChoice, const string& text) {
 
 void drawMainMenu(int currentChoice) {
     cout << "=====================================\n";
-    cout << "         \033[1;36m2048 GAME\033[0m         \n";
+    cout << "            \033[1;36m2048 GAME\033[0m         \n";
     cout << "=====================================\n\n";
 
     drawMenuOption(1, currentChoice, "Register");

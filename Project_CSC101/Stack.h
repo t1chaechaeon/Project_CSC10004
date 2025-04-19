@@ -1,5 +1,4 @@
-#ifndef STACK_H
-#define STACK_H
+#pragma once
 
 struct GameState {
     int** matrix;
@@ -21,5 +20,3 @@ void push(Stack& s, int** matrix, int n, unsigned int score);
 bool pop(Stack& s, GameState& state, int n);
 void clearStack(Stack& s, int n);
 int** cloneMatrix(int** matrix, int n);
-
-#endif

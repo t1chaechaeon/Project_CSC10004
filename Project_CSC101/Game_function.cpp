@@ -1,13 +1,37 @@
 ﻿#include "Game_function.h"
 #include "Stack.h"
+#include <iostream>
 #include <iomanip>
 #include <cstdlib>
 #include <ctime>
 #include <cstring>
+#include <windows.h> // Để dùng màu trong console
 
 Stack undoStack;
 Stack redoStack;
 
+// Đặt màu chữ
+void setColor(int color) {
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+// Trả về màu dựa trên giá trị ô
+int getColorForValue(int value) {
+    switch (value) {
+    case 2: return 8;  // Màu xám sáng
+    case 4: return 14; // Màu vàng sáng
+    case 8: return 10; // Màu xanh lá cây sáng
+    case 16: return 13; // Màu tím sáng
+    case 32: return 12; // Màu đỏ sáng
+    case 64: return 9;  // Màu xanh dương sáng
+    case 128: return 11; // Màu xanh biển sáng
+    case 256: return 15; // Màu trắng sáng
+    case 512: return 5;  // Màu hồng sáng
+    case 1024: return 6; // Màu cam sáng
+    case 2048: return 4; // Màu vàng đậm
+    default: return 7;   // Màu mặc định
+    }
+}
 
 // Tạo ma trận game
 void createMatrix(int**& matrix, int n) {
@@ -16,7 +40,6 @@ void createMatrix(int**& matrix, int n) {
         matrix[i] = new int[n]();
     }
 }
-
 
 // Giải phóng bộ nhớ
 void freeMatrix(int**& matrix, int n) {
@@ -40,7 +63,7 @@ bool move(int** matrix, int n, unsigned int& score, int dx, int dy) {
                 y += dy;
                 moved = true;
             }
-            if (x + dx >= 0 && x + dx < n && y + dy >= 0 && y + dy < n && matrix[x + dx][y + dy] == matrix[x][y]) {
+            if (x + dx >= 0 && x + dx < n && y + dy >= 0 && y + dy < n && matrix[x + dx][y + dy] == matrix[x][y] && matrix[x][y] != 0) {
                 matrix[x + dx][y + dy] *= 2;
                 score += matrix[x + dx][y + dy];
                 matrix[x][y] = 0;
@@ -91,46 +114,62 @@ bool checkWin(int** matrix, int n) {
 
 // Sinh ô mới
 void spawnNewTile(int** matrix, int n) {
-    srand(time(0)); // Gọi lại srand mỗi lần tạo ô mới (không khuyến khích)
-
+    srand(time(0));
     int x, y;
     do {
         x = rand() % n;
         y = rand() % n;
-    } while (matrix[x][y] != 0); // Lặp đến khi tìm được ô trống
-
-    // Gán giá trị mới vào ô trống
+    } while (matrix[x][y] != 0);
     matrix[x][y] = (rand() % 10 == 0) ? 4 : 2;
 }
 
 // In bảng game
 void printMatrix(int** matrix, int n, unsigned int score) {
-    std::cout << "Score: " << score << "\n";
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            std::cout << std::setw(5) << matrix[i][j] << " ";
+    system("cls");
+    std::cout << "\n\t\t      2048 GAME\n";
+    std::cout << "\t\t    -----------------\n";
+    std::cout << "\t\t       Score: " << score << "\n\n";
+
+    // Dòng phân cách giữa các ô
+    std::string line = "+-------+-------+-------+-------+\n";
+
+    for (int i = 0; i < n; ++i) {
+        std::cout << "\t\t    " << line;  // In dòng phân cách
+        std::cout << "\t\t    ";  // Khoảng cách trước khi in các ô
+
+        for (int j = 0; j < n; ++j) {
+            std::cout << "|";  // In dấu phân cách giữa các ô
+
+            // Nếu ô trống, in dấu cách, nếu không in giá trị ô
+            if (matrix[i][j] == 0) {
+                std::cout << std::setw(6) << " ";  // Căn chỉnh trống
+            }
+            else {
+                setColor(getColorForValue(matrix[i][j]));  // Đặt màu cho ô
+                std::cout << std::setw(6) << matrix[i][j];  // Căn chỉnh giá trị ô
+                setColor(7);  // Đặt màu mặc định
+            }
         }
-        std::cout << "\n";
+
+        std::cout << "|\n";  // Kết thúc dòng ô
     }
+
+    std::cout << "\t\t    " << line;  // In dòng phân cách cuối cùng
+    std::cout << "\n\n\tUse arrow keys to move. U - Undo, R - Redo, S - Save & Exit\n";
 }
+
 
 // Sao chép ma trận
 void copyMatrix(int** src, int**& dest, int n) {
     if (src == nullptr || dest == nullptr || n <= 0) return;
-
-    // Giải phóng bộ nhớ nếu dest đã tồn tại
-    for (int i = 0; i < n; ++i) {
-        delete[] dest[i];
-    }
+    for (int i = 0; i < n; ++i) delete[] dest[i];
     delete[] dest;
 
-    // Cấp phát bộ nhớ mới cho dest
     dest = new int* [n];
     for (int i = 0; i < n; ++i) {
         dest[i] = new int[n];
     }
 
-    // Sao chép dữ liệu từ src sang dest
     for (int i = 0; i < n; i++) {
         memcpy(dest[i], src[i], n * sizeof(int));
     }
@@ -139,55 +178,33 @@ void copyMatrix(int** src, int**& dest, int n) {
 // Hàm Undo
 void undo(int**& matrix, int n, unsigned int& score) {
     GameState prev;
-
-    // Kiểm tra xem undoStack có trống không
     if (!pop(undoStack, prev, n)) {
         std::cout << "No more undo!\n";
         return;
     }
-
-    // Lưu trạng thái hiện tại vào redoStack trước khi Undo
     push(redoStack, matrix, n, score);
 
-    // Giải phóng bộ nhớ ma trận hiện tại để tránh rò rỉ bộ nhớ
-    for (int i = 0; i < n; ++i) {
-        delete[] matrix[i];
-    }
+    for (int i = 0; i < n; ++i) delete[] matrix[i];
     delete[] matrix;
 
-    // Sao chép ma trận từ trạng thái trước khi Undo vào ma trận hiện tại
     matrix = prev.matrix;
     score = prev.score;
-
-    // Giải phóng bộ nhớ ma trận của GameState prev sau khi sao chép
-    prev.matrix = nullptr;  // Tránh giải phóng nhiều lần
+    prev.matrix = nullptr;
 }
-
-
 
 // Hàm Redo
 void redo(int**& matrix, int n, unsigned int& score) {
     GameState next;
-
-    // Kiểm tra xem redoStack có trống không
     if (!pop(redoStack, next, n)) {
         std::cout << "No more redo!\n";
         return;
     }
-
-    // Lưu trạng thái hiện tại vào undoStack trước khi Redo
     push(undoStack, matrix, n, score);
 
-    // Giải phóng bộ nhớ ma trận hiện tại để tránh rò rỉ bộ nhớ
-    for (int i = 0; i < n; ++i) {
-        delete[] matrix[i];
-    }
+    for (int i = 0; i < n; ++i) delete[] matrix[i];
     delete[] matrix;
 
-    // Sao chép ma trận từ trạng thái tiếp theo vào ma trận hiện tại
     matrix = next.matrix;
     score = next.score;
-
-    // Giải phóng bộ nhớ ma trận của GameState next sau khi sao chép
-    next.matrix = nullptr;  // Tránh giải phóng nhiều lần
+    next.matrix = nullptr;
 }
